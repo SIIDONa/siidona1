@@ -13,19 +13,19 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("en");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    // Only run on client after hydration
-    const savedLang = localStorage.getItem("language") as Language;
-    if (savedLang && ["en", "am", "ar"].includes(savedLang)) {
-      setLanguageState(savedLang);
-      document.documentElement.dir = savedLang === "ar" ? "rtl" : "ltr";
-      document.documentElement.lang = savedLang;
+  // Lazy initializer to check localStorage on first render (client-side only)
+  const [language, setLanguageState] = useState<Language>(() => {
+    if (typeof window !== "undefined") {
+      const savedLang = localStorage.getItem("language") as Language;
+      if (savedLang && ["en", "am", "ar"].includes(savedLang)) {
+        // Set initial dir and lang attributes
+        document.documentElement.dir = savedLang === "ar" ? "rtl" : "ltr";
+        document.documentElement.lang = savedLang;
+        return savedLang;
+      }
     }
-    setMounted(true);
-  }, []);
+    return "en";
+  });
 
   const setLanguage = async (lang: Language) => {
     setLanguageState(lang);
@@ -34,7 +34,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = lang;
     
     // Also set a cookie for server-side language detection
-    // Use fetch to set cookie via API route
     try {
       await fetch('/api/language', {
         method: 'POST',

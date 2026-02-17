@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#FEF3C7"/>
+  <rect x="300" y="200" width="200" height="200" rx="20" fill="#FBBF24" opacity="0.3"/>
+  <path d="M400 280 L350 350 L320 310 L350 250 Z" fill="#D97706" opacity="0.5"/>
+  <rect x="320" y="350" width="160" height="80" rx="10" fill="#D97706" opacity="0.5"/>
+  <circle cx="250" cy="250" r="30" fill="#F59E0B" opacity="0.4"/>
+  <circle cx="550" cy="280" r="40" fill="#F59E0B" opacity="0.3"/>
+  <circle cx="200" cy="400" r="25" fill="#F59E0B" opacity="0.4"/>
+  <circle cx="600" cy="420" r="35" fill="#F59E0B" opacity="0.3"/>
+  <text x="400" y="520" font-family="Arial, sans-serif" font-size="32" fill="#B45309" text-anchor="middle" font-weight="bold">No Image Available</text>
+</svg>

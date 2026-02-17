@@ -89,7 +89,11 @@ export default async function AdDetailPage({
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="text-6xl sm:text-8xl">🛍️</div>
+                  <img
+                    src="/placeholder.svg"
+                    alt="No image"
+                    className="w-full h-full object-cover"
+                  />
                 )}
               </div>
             </div>

@@ -174,7 +174,11 @@ export default async function Home() {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="text-4xl sm:text-6xl">🛍️</div>
+                    <img
+                      src="/placeholder.svg"
+                      alt="No image"
+                      className="w-full h-full object-cover"
+                    />
                   )}
                 </div>
                 <div className="p-3 sm:p-4">

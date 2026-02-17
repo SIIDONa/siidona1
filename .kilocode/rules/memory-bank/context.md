@@ -2,9 +2,9 @@
 
 ## Current State
 
-**Project Status**: ✅ Fully Functional Classified Ads Platform with Golden Theme
+**Project Status**: ✅ Fully Functional Classified Ads Platform with Golden Theme, i18n, and Wallet System
 
-The template has been transformed into "siidona1", a complete classified ads platform for Ethiopia where users can post ads, guests can browse listings, and admins have full control. Features a golden-themed footer with social media integration and day/night mode.
+The template has been transformed into "siidona1", a complete classified ads platform for Ethiopia where users can post ads, guests can browse listings, and admins have full control. Features a golden-themed footer with social media integration, day/night mode, multilingual support (English, Amharic, Arabic), and wallet system.
 
 ## Recently Completed
 
@@ -23,6 +23,10 @@ The template has been transformed into "siidona1", a complete classified ads pla
 - [x] Golden-themed footer with social media links
 - [x] Day/night mode toggle
 - [x] Dark mode support across the site
+- [x] **NEW**: Multilingual support (English, Amharic, Arabic)
+- [x] **NEW**: Wallet system with admin-only fund management
+- [x] **NEW**: Fully responsive design for all screen sizes
+- [x] **NEW**: Golden color theme throughout the site
 
 ## Current Structure
 
@@ -33,11 +37,14 @@ The template has been transformed into "siidona1", a complete classified ads pla
 | `src/app/register/page.tsx` | User registration | ✅ Complete |
 | `src/app/ads/new/page.tsx` | Post new ad | ✅ Complete |
 | `src/app/ads/[id]/page.tsx` | Ad detail view | ✅ Complete |
-| `src/app/admin/page.tsx` | Admin dashboard | ✅ Complete |
+| `src/app/admin/page.tsx` | Admin dashboard + Wallet | ✅ Complete |
 | `src/app/api/auth/` | Auth API routes | ✅ Complete |
 | `src/db/schema.ts` | Database schema | ✅ Complete |
 | `src/db/seed.ts` | Database seeding | ✅ Complete |
 | `src/lib/auth.ts` | Auth utilities | ✅ Complete |
+| `src/lib/translations.ts` | i18n translations (EN/AM/AR) | ✅ Complete |
+| `src/lib/language-context.tsx` | Language context provider | ✅ Complete |
+| `src/components/LanguageSwitcher.tsx` | Language switcher UI | ✅ Complete |
 
 ## Key Features Implemented
 
@@ -57,7 +64,21 @@ The template has been transformed into "siidona1", a complete classified ads pla
 - Delete any ad
 - Add/delete categories
 - View/delete users
+- **NEW**: Wallet management - add funds to user accounts
 - Full platform control
+
+### Internationalization (i18n)
+- English (default)
+- Amharic (አማርኛ)
+- Arabic (العربية) with RTL support
+- Language switcher in header/footer
+- Persistent language preference (localStorage)
+
+### Wallet System
+- Users have wallet balance stored in database (in cents)
+- Only admins can add funds to user wallets
+- Balance displayed in USD format
+- Accessible from admin dashboard
 
 ### Security
 - Password hashing with bcrypt
@@ -68,7 +89,7 @@ The template has been transformed into "siidona1", a complete classified ads pla
 ## Database Schema
 
 ### Tables
-1. **users** - User accounts (id, name, email, password, role, createdAt)
+1. **users** - User accounts (id, name, email, password, role, **walletBalance**, createdAt)
 2. **categories** - Ad categories (id, name, slug, description, createdAt)
 3. **ads** - Classified ads (id, title, description, price, location, contact info, imageUrl, status, userId, categoryId, timestamps)
 
@@ -93,10 +114,11 @@ The template has been transformed into "siidona1", a complete classified ads pla
 
 ### Admin Workflow
 1. Login with admin credentials
-2. Access admin dashboard
+2. Access admin dashboard at `/admin`
 3. Review pending ads → approve/reject
 4. Manage categories and users
-5. Delete problematic content
+5. Manage wallet - add funds to user accounts
+6. Delete problematic content
 
 ## Technical Details
 
@@ -113,9 +135,15 @@ The template has been transformed into "siidona1", a complete classified ads pla
 
 ### Styling
 - Tailwind CSS 4
-- Responsive design
-- Blue color scheme (#3B82F6)
+- **Golden color theme** (yellow-500, yellow-600 primary)
+- Fully responsive design (mobile, tablet, desktop)
+- Dark mode support
 - Clean, modern UI
+
+### Internationalization
+- Context-based translations
+- RTL support for Arabic
+- LocalStorage persistence
 
 ## Available Commands
 
@@ -125,6 +153,7 @@ bun build        # Production build
 bun typecheck    # Type checking
 bun lint         # Linting
 bun db:generate  # Generate migrations
+bun db:push      # Push migrations to DB
 bun db:seed      # Seed database
 ```
 
@@ -138,6 +167,8 @@ bun db:seed      # Seed database
 | 2026-02-17 | Created all user-facing pages (home, login, register, ads) |
 | 2026-02-17 | Built admin dashboard with full management |
 | 2026-02-17 | Added seed script and documentation |
+| 2026-02-17 | Added golden footer with social media and day/night mode |
+| 2026-02-17 | **Major update**: Golden theme, responsive, i18n (EN/AM/AR), wallet system |
 
 ## Next Steps (Optional Enhancements)
 

@@ -12,23 +12,21 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-// Get initial language from localStorage or default to English
-function getInitialLanguage(): Language {
-  if (typeof window === "undefined") return "en";
-  const savedLang = localStorage.getItem("language") as Language;
-  if (savedLang && ["en", "am", "ar"].includes(savedLang)) {
-    return savedLang;
-  }
-  return "en";
-}
-
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(getInitialLanguage);
+  const [language, setLanguageState] = useState<Language>("en");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Set initial direction based on loaded language
-    document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
-    document.documentElement.lang = language;
+    // Only run on client after hydration
+    const savedLang = localStorage.getItem("language") as Language;
+    if (savedLang && ["en", "am", "ar"].includes(savedLang)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setLanguageState(savedLang);
+      document.documentElement.dir = savedLang === "ar" ? "rtl" : "ltr";
+      document.documentElement.lang = savedLang;
+    }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
   }, []);
 
   const setLanguage = (lang: Language) => {

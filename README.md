@@ -69,15 +69,16 @@ A modern classified ads website built with Next.js 16, where users can post ads,
 
 ### Initial Setup
 
-The database has been set up with migrations. To seed the database with initial data:
+The database has been set up with migrations. The seed script is available to populate initial data:
 
-```bash
-bun db:seed
-```
-
-This creates:
+**Note**: The seed script (`bun db:seed`) requires database credentials that are only available in the deployed environment. After deployment, you can run the seed script to create:
 - An admin user (email: `admin@siidona1.com`, password: `admin123`)
 - 8 default categories (Electronics, Vehicles, Real Estate, Furniture, Fashion, Services, Jobs, Other)
+
+Alternatively, you can manually create an admin user by:
+1. Registering a new account through `/register`
+2. Manually updating the user's role to "admin" in the database
+3. Creating categories through the admin dashboard
 
 ### Admin Access
 

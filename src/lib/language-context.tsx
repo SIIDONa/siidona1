@@ -20,20 +20,30 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     // Only run on client after hydration
     const savedLang = localStorage.getItem("language") as Language;
     if (savedLang && ["en", "am", "ar"].includes(savedLang)) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setLanguageState(savedLang);
       document.documentElement.dir = savedLang === "ar" ? "rtl" : "ltr";
       document.documentElement.lang = savedLang;
     }
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
-  const setLanguage = (lang: Language) => {
+  const setLanguage = async (lang: Language) => {
     setLanguageState(lang);
     localStorage.setItem("language", lang);
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
     document.documentElement.lang = lang;
+    
+    // Also set a cookie for server-side language detection
+    // Use fetch to set cookie via API route
+    try {
+      await fetch('/api/language', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ language: lang }),
+      });
+    } catch (e) {
+      // Ignore cookie errors - localStorage is the primary storage
+    }
   };
 
   const t = (key: TranslationKey): string => {

@@ -1,13 +1,26 @@
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 import { getSession } from "@/lib/auth";
 import { db } from "@/db";
 import { ads, categories } from "@/db/schema";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { translations } from "@/lib/translations";
+
+// Server-side translation function
+function getTranslation(lang: string, key: string): string {
+  const langKey = lang as "en" | "am" | "ar";
+  return translations[langKey]?.[key as keyof typeof translations.en] || translations.en[key as keyof typeof translations.en] || key;
+}
 
 export default async function NewAdPage() {
   const session = await getSession();
+  
+  // Get language from cookie
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("language")?.value || "en";
+  const t = (key: string) => getTranslation(lang, key);
 
   if (!session) {
     redirect("/login");
@@ -67,13 +80,13 @@ export default async function NewAdPage() {
       <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex-1">
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-5 sm:p-8 border-2 border-yellow-200 dark:border-yellow-800">
           <h1 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-gray-800 dark:text-white">
-            Post a New Ad
+            {t("postAdTitle")}
           </h1>
 
           <form action={createAd} className="space-y-5 sm:space-y-6">
             <div>
               <label htmlFor="title" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
-                Title *
+                {t("title")} *
               </label>
               <input
                 id="title"
@@ -87,7 +100,7 @@ export default async function NewAdPage() {
 
             <div>
               <label htmlFor="description" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
-                Description *
+                {t("description")} *
               </label>
               <textarea
                 id="description"
@@ -102,7 +115,7 @@ export default async function NewAdPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <label htmlFor="price" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
-                  Price *
+                  {t("price")} *
                 </label>
                 <input
                   id="price"
@@ -116,7 +129,7 @@ export default async function NewAdPage() {
 
               <div>
                 <label htmlFor="categoryId" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
-                  Category *
+                  {t("category")} *
                 </label>
                 <select
                   id="categoryId"
@@ -124,7 +137,7 @@ export default async function NewAdPage() {
                   required
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-yellow-200 dark:border-yellow-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-800 dark:text-white"
                 >
-                  <option value="">Select a category</option>
+                  <option value="">{t("selectCategory")}</option>
                   {allCategories.map((category) => (
                     <option key={category.id} value={category.id}>
                       {category.name}
@@ -150,7 +163,7 @@ export default async function NewAdPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <label htmlFor="contactPhone" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
-                  Contact Phone
+                  {t("contactPhone")}
                 </label>
                 <input
                   id="contactPhone"
@@ -163,7 +176,7 @@ export default async function NewAdPage() {
 
               <div>
                 <label htmlFor="contactEmail" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
-                  Contact Email
+                  {t("contactEmail")}
                 </label>
                 <input
                   id="contactEmail"
@@ -177,7 +190,7 @@ export default async function NewAdPage() {
 
             <div>
               <label htmlFor="imageUrl" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
-                Image URL
+                {t("imageUrl")}
               </label>
               <input
                 id="imageUrl"
@@ -187,7 +200,7 @@ export default async function NewAdPage() {
                 placeholder="https://example.com/image.jpg"
               />
               <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
-                Paste a link to an image hosted online
+                {t("imageUrlHint")}
               </p>
             </div>
 
@@ -196,18 +209,18 @@ export default async function NewAdPage() {
                 type="submit"
                 className="flex-1 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white py-2 sm:py-3 rounded-lg font-bold text-base sm:text-lg hover:from-yellow-600 hover:to-yellow-700 transition-all shadow-md hover:shadow-lg"
               >
-                Submit Ad
+                {t("submitAd")}
               </button>
               <Link
                 href="/"
                 className="flex-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 py-2 sm:py-3 rounded-lg font-bold text-base sm:text-lg hover:bg-gray-300 dark:hover:bg-gray-600 text-center transition-colors"
               >
-                Cancel
+                {t("cancel")}
               </Link>
             </div>
 
             <p className="text-sm text-gray-500 dark:text-gray-400 text-center bg-yellow-50 dark:bg-yellow-900/20 p-3 rounded-lg">
-              * Your ad will be reviewed by an admin before being published.
+              * {t("adReviewNote")}
             </p>
           </form>
         </div>

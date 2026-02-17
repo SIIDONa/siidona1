@@ -1,10 +1,18 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { cookies } from "next/headers";
 import { db } from "@/db";
 import { ads, categories, users } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import Footer from "@/components/Footer";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { translations } from "@/lib/translations";
+
+// Server-side translation function
+function getTranslation(lang: string, key: string): string {
+  const langKey = lang as "en" | "am" | "ar";
+  return translations[langKey]?.[key as keyof typeof translations.en] || translations.en[key as keyof typeof translations.en] || key;
+}
 
 export default async function AdDetailPage({
   params,
@@ -12,6 +20,11 @@ export default async function AdDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+  
+  // Get language from cookie
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("language")?.value || "en";
+  const t = (key: string) => getTranslation(lang, key);
   
   const [ad] = await db
     .select({
@@ -62,7 +75,7 @@ export default async function AdDetailPage({
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
-          Back to listings
+          {t("backToListings")}
         </Link>
 
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border-2 border-yellow-200 dark:border-yellow-800">
@@ -112,7 +125,7 @@ export default async function AdDetailPage({
 
               <div className="border-t-2 border-yellow-200 dark:border-yellow-800 pt-5 sm:pt-6">
                 <h3 className="font-bold text-gray-700 dark:text-gray-200 mb-3 sm:mb-4 text-lg">
-                  Contact Seller
+                  {t("contactSeller")}
                 </h3>
                 <div className="space-y-2 sm:space-y-3">
                   <p className="text-gray-600 dark:text-gray-300">
@@ -138,7 +151,7 @@ export default async function AdDetailPage({
               </div>
 
               <div className="mt-5 sm:mt-6 text-sm text-gray-500 dark:text-gray-400">
-                Posted on {ad.createdAt ? new Date(ad.createdAt).toLocaleDateString() : "Unknown"}
+                {t("postedBy")} {ad.userName || ad.userEmail} | {ad.createdAt ? new Date(ad.createdAt).toLocaleDateString() : "Unknown"}
               </div>
             </div>
           </div>

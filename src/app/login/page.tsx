@@ -5,9 +5,11 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { useLanguage } from "@/lib/language-context";
 
 export default function LoginPage() {
   const router = useRouter();
+  const { t } = useLanguage();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -65,7 +67,7 @@ export default function LoginPage() {
                 siidona1
               </Link>
               <h2 className="mt-4 text-xl sm:text-2xl font-bold text-gray-800 dark:text-white">
-                Login to your account
+                {t("loginTitle")}
               </h2>
             </div>
 
@@ -78,7 +80,7 @@ export default function LoginPage() {
 
               <div>
                 <label htmlFor="email" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
-                  Email
+                  {t("email")}
                 </label>
                 <input
                   id="email"
@@ -93,7 +95,7 @@ export default function LoginPage() {
 
               <div>
                 <label htmlFor="password" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
-                  Password
+                  {t("password")}
                 </label>
                 <input
                   id="password"
@@ -111,14 +113,14 @@ export default function LoginPage() {
                 disabled={loading}
                 className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-white py-2 sm:py-3 rounded-lg font-bold text-base sm:text-lg hover:from-yellow-600 hover:to-yellow-700 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg"
               >
-                {loading ? "Logging in..." : "Login"}
+                {loading ? (t("login") + "...") : t("loginButton")}
               </button>
             </form>
 
             <p className="mt-6 sm:mt-8 text-center text-sm sm:text-base text-gray-600 dark:text-gray-300">
-              Don&apos;t have an account?{" "}
+              {t("noAccount")}{" "}
               <Link href="/register" className="text-yellow-600 dark:text-yellow-400 font-bold hover:underline">
-                Register here
+                {t("registerHere")}
               </Link>
             </p>
           </div>

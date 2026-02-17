@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { cookies } from "next/headers";
 import { db } from "@/db";
 import { ads, categories, users } from "@/db/schema";
 import { eq, desc } from "drizzle-orm";
@@ -14,6 +15,11 @@ function getTranslation(lang: string, key: string): string {
 
 export default async function Home() {
   const session = await getSession();
+  
+  // Get language from cookie
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("language")?.value || "en";
+  const t = (key: string) => getTranslation(lang, key);
   
   // Get all approved ads with category and user info
   const allAds = await db
@@ -54,14 +60,14 @@ export default async function Home() {
                     href="/ads/new"
                     className="bg-white text-yellow-600 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-bold hover:bg-yellow-50 transition-colors text-sm sm:text-base shadow-md"
                   >
-                    + Post Ad
+                    {t("postAd")}
                   </Link>
                   {session.role === "admin" && (
                     <Link
                       href="/admin"
                       className="bg-yellow-800 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg hover:bg-yellow-900 transition-colors text-sm sm:text-base font-medium"
                     >
-                      Admin
+                      {t("admin")}
                     </Link>
                   )}
                   <form action="/api/auth/logout" method="POST">
@@ -69,7 +75,7 @@ export default async function Home() {
                       type="submit"
                       className="text-white hover:text-yellow-200 font-medium text-sm sm:text-base"
                     >
-                      Logout
+                      {t("logout")}
                     </button>
                   </form>
                 </>
@@ -79,13 +85,13 @@ export default async function Home() {
                     href="/login"
                     className="text-white hover:text-yellow-200 font-medium text-sm sm:text-base"
                   >
-                    Login
+                    {t("login")}
                   </Link>
                   <Link
                     href="/register"
                     className="bg-white text-yellow-600 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-bold hover:bg-yellow-50 transition-colors text-sm sm:text-base shadow-md"
                   >
-                    Register
+                    {t("register")}
                   </Link>
                 </>
               )}
@@ -98,17 +104,17 @@ export default async function Home() {
       <div className="bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-500 dark:from-yellow-600 dark:via-yellow-500 dark:to-yellow-600 text-white py-8 sm:py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 drop-shadow-lg">
-            Welcome to siidona1
+            {t("welcomeTitle")}
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-yellow-50">
-            Buy and sell anything in Ethiopia
+            {t("welcomeSubtitle")}
           </p>
           {!session && (
             <Link
               href="/register"
               className="inline-block bg-white text-yellow-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-lg sm:text-xl hover:bg-yellow-50 shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
             >
-              Get Started
+              {t("getStarted")}
             </Link>
           )}
         </div>
@@ -136,19 +142,19 @@ export default async function Home() {
       {/* Ads Grid */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex-1">
         <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-gray-800 dark:text-white">
-          Latest Ads
+          {t("latestAds")}
         </h2>
         
         {allAds.length === 0 ? (
           <div className="text-center py-12 sm:py-16">
             <div className="text-6xl sm:text-8xl mb-4">📦</div>
-            <p className="text-gray-500 text-lg sm:text-xl mb-4">No ads available yet.</p>
+            <p className="text-gray-500 text-lg sm:text-xl mb-4">{t("noAds")}</p>
             {session && (
               <Link
                 href="/ads/new"
                 className="text-yellow-600 hover:text-yellow-700 font-bold text-lg"
               >
-                Be the first to post an ad!
+                {t("beFirst")}
               </Link>
             )}
           </div>

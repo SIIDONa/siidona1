@@ -5,9 +5,11 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { useLanguage } from "@/lib/language-context";
 
 export default function RegisterPage() {
   const router = useRouter();
+  const { t } = useLanguage();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -66,7 +68,7 @@ export default function RegisterPage() {
                 siidona1
               </Link>
               <h2 className="mt-4 text-xl sm:text-2xl font-bold text-gray-800 dark:text-white">
-                Create your account
+                {t("registerTitle")}
               </h2>
             </div>
 
@@ -79,7 +81,7 @@ export default function RegisterPage() {
 
               <div>
                 <label htmlFor="name" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
-                  Name
+                  {t("name")}
                 </label>
                 <input
                   id="name"
@@ -94,7 +96,7 @@ export default function RegisterPage() {
 
               <div>
                 <label htmlFor="email" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
-                  Email
+                  {t("email")}
                 </label>
                 <input
                   id="email"
@@ -109,7 +111,7 @@ export default function RegisterPage() {
 
               <div>
                 <label htmlFor="password" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
-                  Password
+                  {t("password")}
                 </label>
                 <input
                   id="password"
@@ -129,14 +131,14 @@ export default function RegisterPage() {
                 disabled={loading}
                 className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-white py-2 sm:py-3 rounded-lg font-bold text-base sm:text-lg hover:from-yellow-600 hover:to-yellow-700 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg"
               >
-                {loading ? "Creating account..." : "Register"}
+                {loading ? (t("register") + "...") : t("registerButton")}
               </button>
             </form>
 
             <p className="mt-6 sm:mt-8 text-center text-sm sm:text-base text-gray-600 dark:text-gray-300">
-              Already have an account?{" "}
+              {t("haveAccount")}{" "}
               <Link href="/login" className="text-yellow-600 dark:text-yellow-400 font-bold hover:underline">
-                Login here
+                {t("loginHere")}
               </Link>
             </p>
           </div>

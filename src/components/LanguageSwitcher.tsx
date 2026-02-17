@@ -39,9 +39,9 @@ export default function LanguageSwitcher() {
           <button
             key={lang.code}
             onClick={() => setLanguage(lang.code)}
-            className={`w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-yellow-50 dark:hover:bg-yellow-900/30 transition-colors first:rounded-t-lg last:rounded-b-lg ${
+            className={`w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors first:rounded-t-lg last:rounded-b-lg ${
               language === lang.code
-                ? "bg-yellow-100 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-200 font-bold"
+                ? "bg-gray-100 dark:bg-gray-700 text-yellow-800 dark:text-yellow-200 font-bold border-l-4 border-yellow-500"
                 : "text-gray-700 dark:text-gray-200"
             }`}
           >

@@ -52,9 +52,9 @@ export default async function AdDetailPage({
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white dark:from-gray-900 dark:to-gray-800 flex flex-col">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
       {/* Header */}
-      <header className="bg-gradient-to-r from-yellow-600 to-yellow-500 dark:from-yellow-700 dark:to-yellow-600 shadow-lg">
+      <header className="bg-white dark:bg-gray-800 shadow-lg border-b-2 border-yellow-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
           <div className="flex justify-between items-center">
             <Link href="/" className="text-2xl sm:text-3xl font-bold text-white drop-shadow-md">
@@ -100,7 +100,7 @@ export default async function AdDetailPage({
 
             <div className="md:w-1/2 p-5 sm:p-8">
               <div className="mb-4">
-                <span className="bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm font-bold">
+                <span className="bg-white dark:bg-gray-700 border-2 border-yellow-500 text-yellow-600 dark:text-yellow-400 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm font-bold">
                   {ad.categoryName}
                 </span>
               </div>

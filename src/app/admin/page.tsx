@@ -100,9 +100,9 @@ export default async function AdminPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
-      <header className="bg-gradient-to-r from-yellow-600 to-yellow-500 dark:from-yellow-700 dark:to-yellow-600 shadow-lg">
+      <header className="bg-white dark:bg-gray-800 shadow-lg border-b-2 border-yellow-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-0">
             <h1 className="text-2xl sm:text-3xl font-bold text-white">Admin Dashboard</h1>
@@ -224,9 +224,9 @@ export default async function AdminPage() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white dark:bg-gray-800 divide-y divide-yellow-200 dark:divide-yellow-800">
+                <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-600">
                   {allAds.map((ad) => (
-                    <tr key={ad.id} className="hover:bg-yellow-50 dark:hover:bg-yellow-900/20">
+                    <tr key={ad.id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
                       <td className="px-4 sm:px-6 py-4">
                         <span className="font-bold text-gray-800 dark:text-white text-sm sm:text-base line-clamp-1">{ad.title}</span>
                       </td>
@@ -246,7 +246,7 @@ export default async function AdminPage() {
                               ? "bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300"
                               : ad.status === "rejected"
                               ? "bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300"
-                              : "bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300"
+                              : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
                           }`}
                         >
                           {ad.status}
@@ -336,7 +336,7 @@ export default async function AdminPage() {
                 </thead>
                 <tbody className="bg-white dark:bg-gray-800 divide-y divide-yellow-200 dark:divide-yellow-800">
                   {allCategories.map((category) => (
-                    <tr key={category.id} className="hover:bg-yellow-50 dark:hover:bg-yellow-900/20">
+                    <tr key={category.id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
                       <td className="px-4 sm:px-6 py-4 whitespace-nowrap font-bold text-gray-800 dark:text-white">
                         {category.name}
                       </td>

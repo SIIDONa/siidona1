@@ -177,7 +177,7 @@ export default function NewAdForm({ categories }: { categories: Category[] }) {
           {t("image")}
         </label>
         
-        <div className="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg border-2 border-yellow-200 dark:border-yellow-800">
+        <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border-2 border-yellow-500 dark:border-yellow-600">
           <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 font-medium">
             Upload an image or paste an image URL:
           </p>
@@ -224,7 +224,7 @@ export default function NewAdForm({ categories }: { categories: Category[] }) {
         </Link>
       </div>
 
-      <p className="text-sm text-gray-500 dark:text-gray-400 text-center bg-yellow-50 dark:bg-yellow-900/20 p-3 rounded-lg">
+      <p className="text-sm text-gray-500 dark:text-gray-400 text-center bg-gray-50 dark:bg-gray-800 p-3 rounded-lg border border-gray-200 dark:border-gray-600">
         * {t("adReviewNote")}
       </p>
     </form>

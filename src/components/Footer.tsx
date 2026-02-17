@@ -42,7 +42,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 dark:from-yellow-800 dark:via-yellow-700 dark:to-yellow-800 text-white mt-auto">
+    <footer className="bg-gray-900 dark:bg-gray-950 text-white mt-auto border-t-2 border-yellow-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {/* About Section */}

@@ -44,9 +44,9 @@ export default async function Home() {
   const allCategories = await db.select().from(categories);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white dark:from-gray-900 dark:to-gray-800 flex flex-col">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
       {/* Header */}
-      <header className="bg-gradient-to-r from-yellow-600 to-yellow-500 dark:from-yellow-700 dark:to-yellow-600 shadow-lg">
+      <header className="bg-white dark:bg-gray-800 shadow-lg border-b-2 border-yellow-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-0">
             <Link href="/" className="text-2xl sm:text-3xl font-bold text-white drop-shadow-md">
@@ -101,18 +101,18 @@ export default async function Home() {
       </header>
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-500 dark:from-yellow-600 dark:via-yellow-500 dark:to-yellow-600 text-white py-8 sm:py-12 md:py-16">
+      <div className="bg-white dark:bg-gray-800 border-b-2 border-yellow-500 text-gray-800 dark:text-white py-8 sm:py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 drop-shadow-lg">
             {t("welcomeTitle")}
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-yellow-50">
+          <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-gray-600 dark:text-gray-300">
             {t("welcomeSubtitle")}
           </p>
           {!session && (
             <Link
               href="/register"
-              className="inline-block bg-white text-yellow-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-lg sm:text-xl hover:bg-yellow-50 shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+              className="inline-block border-2 border-yellow-500 text-yellow-600 dark:text-yellow-400 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-lg sm:text-xl hover:bg-yellow-50 dark:hover:bg-yellow-900/30 shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
             >
               {t("getStarted")}
             </Link>
@@ -121,16 +121,16 @@ export default async function Home() {
       </div>
 
       {/* Category Filter Bar */}
-      <div className="bg-white dark:bg-gray-800 shadow-sm border-b border-yellow-200 dark:border-yellow-800">
+      <div className="bg-white dark:bg-gray-800 shadow-sm border-b border-yellow-500 dark:border-yellow-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 overflow-x-auto">
           <div className="flex gap-2 sm:gap-4 min-w-max">
-            <button className="px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-full font-bold text-sm sm:text-base shadow-md">
+            <button className="px-3 sm:px-4 py-1.5 sm:py-2 bg-yellow-500 text-white rounded-full font-bold text-sm sm:text-base shadow-md">
               All
             </button>
             {allCategories.map((cat) => (
               <button
                 key={cat.id}
-                className="px-3 sm:px-4 py-1.5 sm:py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 rounded-full font-medium text-sm sm:text-base hover:bg-yellow-200 dark:hover:bg-yellow-900/50 transition-colors whitespace-nowrap"
+                className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white dark:bg-gray-700 border-2 border-yellow-500 text-yellow-600 dark:text-yellow-400 rounded-full font-medium text-sm sm:text-base hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors whitespace-nowrap"
               >
                 {cat.name}
               </button>
@@ -164,9 +164,9 @@ export default async function Home() {
               <Link
                 key={ad.id}
                 href={`/ads/${ad.id}`}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-xl hover:border-yellow-300 dark:hover:border-yellow-700 border-2 border-transparent transition-all transform hover:-translate-y-1"
+                className="bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden hover:shadow-xl hover:border-yellow-500 dark:hover:border-yellow-500 border-2 border-gray-200 dark:border-gray-600 transition-all transform hover:-translate-y-1"
               >
-                <div className="h-40 sm:h-48 bg-gradient-to-br from-yellow-100 to-yellow-50 dark:from-gray-700 dark:to-gray-600 flex items-center justify-center overflow-hidden">
+                <div className="h-40 sm:h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
                   {ad.imageUrl ? (
                     <img
                       src={ad.imageUrl}
@@ -192,7 +192,7 @@ export default async function Home() {
                     {ad.description}
                   </p>
                   <div className="flex flex-wrap justify-between items-center text-xs sm:text-sm text-gray-500 dark:text-gray-400 gap-1">
-                    <span className="bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-2 py-1 rounded-full font-medium">
+                    <span className="bg-white dark:bg-gray-700 border-2 border-yellow-500 text-yellow-600 dark:text-yellow-400 px-2 py-1 rounded-full font-medium">
                       {ad.categoryName}
                     </span>
                     {ad.location && <span className="truncate max-w-[100px]">{ad.location}</span>}

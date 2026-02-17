@@ -45,9 +45,9 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white dark:from-gray-900 dark:to-gray-800 flex flex-col">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
       {/* Header */}
-      <header className="bg-gradient-to-r from-yellow-600 to-yellow-500 dark:from-yellow-700 dark:to-yellow-600 shadow-lg">
+      <header className="bg-white dark:bg-gray-800 shadow-lg border-b-2 border-yellow-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
           <div className="flex justify-between items-center">
             <Link href="/" className="text-2xl sm:text-3xl font-bold text-white drop-shadow-md">
@@ -64,7 +64,7 @@ export default function RegisterPage() {
         <div className="max-w-md w-full">
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 sm:p-8 border-2 border-yellow-200 dark:border-yellow-800">
             <div className="text-center mb-6 sm:mb-8">
-              <Link href="/" className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent">
+              <Link href="/" className="text-3xl sm:text-4xl font-bold text-yellow-600 dark:text-yellow-400">
                 siidona1
               </Link>
               <h2 className="mt-4 text-xl sm:text-2xl font-bold text-gray-800 dark:text-white">

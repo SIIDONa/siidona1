@@ -28,6 +28,8 @@ The template has been transformed into "siidona1", a complete classified ads pla
 - [x] **NEW**: Fully responsive design for all screen sizes
 - [x] **NEW**: Golden color theme throughout the site
 - [x] **FIXED**: Backend - switched from @kilocode/app-builder-db to libsql for Bun compatibility
+- [x] **FIXED**: Hydration errors in theme toggle and language context
+- [x] **FIXED**: Language switching now works - added cookie support for server-side i18n
 
 ## Current Structure
 
@@ -40,6 +42,7 @@ The template has been transformed into "siidona1", a complete classified ads pla
 | `src/app/ads/[id]/page.tsx` | Ad detail view | ✅ Complete |
 | `src/app/admin/page.tsx` | Admin dashboard + Wallet | ✅ Complete |
 | `src/app/api/auth/` | Auth API routes | ✅ Complete |
+| `src/app/api/language/route.ts` | Language cookie API | ✅ Complete |
 | `src/db/schema.ts` | Database schema | ✅ Complete |
 | `src/db/index.ts` | Database connection (libsql) | ✅ Fixed |
 | `src/db/seed.ts` | Database seeding | ✅ Complete |

@@ -3,6 +3,7 @@ import { db } from "@/db";
 import { ads, categories, users } from "@/db/schema";
 import { eq, desc } from "drizzle-orm";
 import { getSession } from "@/lib/auth";
+import Footer from "@/components/Footer";
 
 export default async function Home() {
   const session = await getSession();
@@ -27,7 +28,7 @@ export default async function Home() {
     .orderBy(desc(ads.createdAt));
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -157,6 +158,8 @@ export default async function Home() {
           </div>
         )}
       </main>
+      
+      <Footer />
     </div>
   );
 }

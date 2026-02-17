@@ -43,33 +43,31 @@ export default function Footer() {
 
   return (
     <footer className="bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 dark:from-yellow-800 dark:via-yellow-700 dark:to-yellow-800 text-white mt-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {/* About Section */}
           <div className="lg:col-span-1">
-            <h3 className="text-xl md:text-2xl font-bold mb-4">siidona1</h3>
-            <p className="text-yellow-100 dark:text-yellow-200 text-sm md:text-base">
-              Ethiopia&apos;s premier classified ads platform. Buy, sell, and discover amazing deals in your area.
+            <h3 className="text-lg font-bold mb-2">siidona1</h3>
+            <p className="text-yellow-100 dark:text-yellow-200 text-xs md:text-sm">
+              Ethiopia&apos;s premier classified ads platform.
             </p>
           </div>
 
           {/* Categories */}
           <div>
-            <h3 className="text-lg md:text-xl font-bold mb-4">Categories</h3>
-            <ul className="space-y-2 text-yellow-100 dark:text-yellow-200 text-sm md:text-base">
+            <h3 className="text-base md:text-lg font-bold mb-2">Categories</h3>
+            <ul className="space-y-1 text-yellow-100 dark:text-yellow-200 text-xs md:text-sm">
               <li className="hover:text-white cursor-pointer transition-colors">Electronics</li>
               <li className="hover:text-white cursor-pointer transition-colors">Vehicles</li>
               <li className="hover:text-white cursor-pointer transition-colors">Real Estate</li>
               <li className="hover:text-white cursor-pointer transition-colors">Furniture</li>
-              <li className="hover:text-white cursor-pointer transition-colors">Fashion</li>
-              <li className="hover:text-white cursor-pointer transition-colors">Services</li>
             </ul>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg md:text-xl font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-2 text-yellow-100 dark:text-yellow-200 text-sm md:text-base">
+            <h3 className="text-base md:text-lg font-bold mb-2">Quick Links</h3>
+            <ul className="space-y-1 text-yellow-100 dark:text-yellow-200 text-xs md:text-sm">
               <li>
                 <Link href="/" className="hover:text-white transition-colors">Home</Link>
               </li>
@@ -87,8 +85,8 @@ export default function Footer() {
 
           {/* Social Media & Settings */}
           <div>
-            <h3 className="text-lg md:text-xl font-bold mb-4">Follow Us</h3>
-            <div className="flex gap-3 md:gap-4 mb-4">
+            <h3 className="text-base md:text-lg font-bold mb-2">Follow Us</h3>
+            <div className="flex gap-2 mb-3">
               <a
                 href="https://youtube.com/@melakushow"
                 target="_blank"
@@ -167,8 +165,8 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-yellow-400 dark:border-yellow-600 mt-6 md:mt-8 pt-6 text-center">
-          <p className="text-base md:text-lg font-bold">
+        <div className="border-t border-yellow-400 dark:border-yellow-600 mt-4 pt-4 text-center">
+          <p className="text-sm md:text-base font-bold">
             © 2026 Siidona Network. All rights reserved.
           </p>
         </div>

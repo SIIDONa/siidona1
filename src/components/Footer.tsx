@@ -171,9 +171,6 @@ export default function Footer() {
           <p className="text-base md:text-lg font-bold">
             © 2026 Siidona Network. All rights reserved.
           </p>
-          <p className="text-yellow-100 dark:text-yellow-200 mt-2 text-sm md:text-base">
-            Made with ❤️ in Ethiopia
-          </p>
         </div>
       </div>
     </footer>

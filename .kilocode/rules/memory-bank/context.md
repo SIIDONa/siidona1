@@ -28,7 +28,7 @@ The template has been transformed into "siidona1", a complete classified ads pla
 - [x] **NEW**: Fully responsive design for all screen sizes
 - [x] **NEW**: Golden color theme throughout the site
 - [x] **FIXED**: Backend - switched from @kilocode/app-builder-db to libsql for Bun compatibility
-- [x] **FIXED**: Hydration errors in theme toggle and language context
+- [x] **REMOVED**: "Made with ❤️ in Ethiopia" from footer
 - [x] **FIXED**: Language switching now works - added cookie support for server-side i18n
 
 ## Current Structure

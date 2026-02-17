@@ -1,0 +1,336 @@
+// Translations for English, Amharic, and Arabic
+export const translations = {
+  en: {
+    // Navigation
+    home: "Home",
+    login: "Login",
+    register: "Register",
+    logout: "Logout",
+    admin: "Admin",
+    postAd: "Post Ad",
+    
+    // Home page
+    welcomeTitle: "Welcome to siidona1",
+    welcomeSubtitle: "Buy and sell anything in your area",
+    getStarted: "Get Started",
+    latestAds: "Latest Ads",
+    noAds: "No ads available yet.",
+    beFirst: "Be the first to post an ad!",
+    noImage: "No image",
+    postedBy: "Posted by",
+    
+    // Auth
+    loginTitle: "Login to your account",
+    registerTitle: "Create your account",
+    email: "Email",
+    password: "Password",
+    name: "Name",
+    confirmPassword: "Confirm Password",
+    loginButton: "Login",
+    registerButton: "Register",
+    noAccount: "Don't have an account?",
+    haveAccount: "Already have an account?",
+    registerHere: "Register here",
+    loginHere: "Login here",
+    
+    // Ad posting
+    postAdTitle: "Post a New Ad",
+    title: "Title",
+    description: "Description",
+    price: "Price",
+    category: "Category",
+    selectCategory: "Select a category",
+    location: "Location",
+    contactPhone: "Contact Phone",
+    contactEmail: "Contact Email",
+    imageUrl: "Image URL",
+    imageUrlHint: "Paste a link to an image hosted online",
+    submitAd: "Submit Ad",
+    cancel: "Cancel",
+    adReviewNote: "Your ad will be reviewed by an admin before being published.",
+    
+    // Ad detail
+    backToListings: "← Back to listings",
+    contactSeller: "Contact Seller",
+    
+    // Admin
+    adminDashboard: "Admin Dashboard",
+    backToSite: "Back to Site",
+    manageAds: "Manage Ads",
+    manageCategories: "Manage Categories",
+    manageUsers: "Manage Users",
+    manageWallet: "Manage Wallet",
+    addFunds: "Add Funds",
+    user: "User",
+    status: "Status",
+    actions: "Actions",
+    approve: "Approve",
+    reject: "Reject",
+    delete: "Delete",
+    addNewCategory: "Add New Category",
+    categoryName: "Category name",
+    categoryDescription: "Description (optional)",
+    add: "Add",
+    slug: "Slug",
+    joined: "Joined",
+    role: "Role",
+    walletBalance: "Wallet Balance",
+    addWalletFunds: "Add Wallet Funds",
+    enterAmount: "Enter amount",
+    
+    // Categories
+    categories: "Categories",
+    electronics: "Electronics",
+    vehicles: "Vehicles",
+    realEstate: "Real Estate",
+    furniture: "Furniture",
+    fashion: "Fashion",
+    services: "Services",
+    jobs: "Jobs",
+    other: "Other",
+    
+    // Footer
+    about: "About",
+    aboutText: "Ethiopia's premier classified ads platform. Buy, sell, and discover amazing deals in your area.",
+    followUs: "Follow Us",
+    lightMode: "Light Mode",
+    darkMode: "Dark Mode",
+    copyright: "© 2026 Siidona Network. All rights reserved.",
+    madeInEthiopia: "Made with ❤️ in Ethiopia",
+    
+    // Wallet
+    wallet: "Wallet",
+    currentBalance: "Current Balance",
+    fundAdded: "Funds added successfully!",
+    insufficientFunds: "Insufficient funds",
+    
+    // Language
+    language: "Language",
+    english: "English",
+    amharic: "አማርኛ",
+    arabic: "العربية",
+  },
+  am: {
+    // Navigation
+    home: "ቤት",
+    login: "ግባ",
+    register: "ይመዝገቡ",
+    logout: "ውጣ",
+    admin: "አስተዳዳሪ",
+    postAd: "ማስታወቂያ ያስገቡ",
+    
+    // Home page
+    welcomeTitle: "ወደ ሲዶና1 እንኳን በደህና መጡ",
+    welcomeSubtitle: "በአካባቢዎ የሚሸጡና የሚገዙ ነገሮችን ያግኙ",
+    getStarted: "ጀምር",
+    latestAds: "የቅርብ ማስታወቂያዎች",
+    noAds: "ማስታወቂያዎች የሉም።",
+    beFirst: "በመጀመሪያ ማስታወቂያ ያስገቡ!",
+    noImage: "ምንም ምስል የለም",
+    postedBy: "የለጠፈው",
+    
+    // Auth
+    loginTitle: "ወደ መለያዎ ይግቡ",
+    registerTitle: "መለያ ይፍጠሩ",
+    email: "ኢሜይል",
+    password: "የይለፍ ቃል",
+    name: "ስም",
+    confirmPassword: "የይለፍ ቃል ያረጋግጡ",
+    loginButton: "ግባ",
+    registerButton: "ይመዝገቡ",
+    noAccount: "መለያ የላችሁም?",
+    haveAccount: "መለያ አላችሁ?",
+    registerHere: "አምይን",
+    loginHere: "አምይን",
+    
+    // Ad posting
+    postAdTitle: "አዲስ ማስታወቂያ ያስገቡ",
+    title: "ርዕስ",
+    description: "መግለጫ",
+    price: "ዋጋ",
+    category: "ምድብ",
+    selectCategory: "ምድብ ይምረጡ",
+    location: "አካባቢ",
+    contactPhone: "ስልክ ቁጥር",
+    contactEmail: "ኢሜይል",
+    imageUrl: "ምስል URL",
+    imageUrlHint: "በድህረ ገጽ ላይ የሚገኝ ምስል ይስጡ",
+    submitAd: "ማስታወቂያ ያስገቡ",
+    cancel: "ይቅር",
+    adReviewNote: "ማስታወቂያዎ በአስተዳዳሪ ከተጽደቀ በኋላ ይታያል።",
+    
+    // Ad detail
+    backToListings: "← ወደ ማስታወቂያዎች ይመለሱ",
+    contactSeller: "ሻጩን ያንሱ",
+    
+    // Admin
+    adminDashboard: "የአስተዳዳሪ ዳሽቦርድ",
+    backToSite: "ወደ ጣቢያው ይመለሱ",
+    manageAds: "ማስታወቂያዎችን ያስተዳድሩ",
+    manageCategories: "ምድቦችን ያስተዳድሩ",
+    manageUsers: "ተጠቃሚዎችን ያስተዳድሩ",
+    manageWallet: "ድምጽ ስርዓትን ያስተዳድሩ",
+    addFunds: "ገንዘብ ጨምር",
+    user: "ተጠቃሚ",
+    status: "ሁኔታ",
+    actions: "ተግባራት",
+    approve: "ተቀባይነት ስጡ",
+    reject: "ውድቅ ያድርጉ",
+    delete: "ሰርዝ",
+    addNewCategory: "አዲስ ምድብ ይጨምሩ",
+    categoryName: "የምድብ ስም",
+    categoryDescription: "መግለጫ (አማራጭ)",
+    add: "ጨምር",
+    slug: "Slug",
+    joined: "ተቀላቅሏል",
+    role: "ሚናነት",
+    walletBalance: "የድምጽ ስርዓት ቀሪ",
+    addWalletFunds: "የድምጽ ስርዓት ገንዘብ ጨምር",
+    enterAmount: "መጠን ያስገቡ",
+    
+    // Categories
+    categories: "ምድቦች",
+    electronics: "ኤሌክትሮኒክስ",
+    vehicles: "ተሽከርካሪዎች",
+    realEstate: "ንብረት",
+    furniture: "አባሎች",
+    fashion: "ፋሽን",
+    services: "አገልግሎቶች",
+    jobs: "ስራዎች",
+    other: "ሌሎች",
+    
+    // Footer
+    about: "ስለ",
+    aboutText: "የኢትዮጵያ ትልቅ ማስታወቂያ መድረክ። ይገዙ፣ ሸጡና በአካባቢዎ አስደናቂ ቅናሾችን ያግኙ።",
+    followUs: "ተከተሉን",
+    lightMode: "ብርሃን ሁኔታ",
+    darkMode: "ጨለማ ሁኔታ",
+    copyright: "© 2026 ሲዶና ኔትዎርክ። መብቶች በሙሉ የተጠቀሙ።",
+    madeInEthiopia: "በኢትዮጵያ ተሰርቷል ❤️",
+    
+    // Wallet
+    wallet: "ድምጽ ስርዓት",
+    currentBalance: "አሁን ያለው ቀሪ",
+    fundAdded: "ገንዘብ ተጨምሯል!",
+    insufficientFunds: "በቂ ገንዘብ የለም",
+    
+    // Language
+    language: "ቋንቋ",
+    english: "English",
+    amharic: "አማርኛ",
+    arabic: "العربية",
+  },
+  ar: {
+    // Navigation
+    home: "الرئيسية",
+    login: "تسجيل الدخول",
+    register: "تسجيل",
+    logout: "خروج",
+    admin: "مدير",
+    postAd: "نشر إعلان",
+    
+    // Home page
+    welcomeTitle: "مرحباً بك في سييدونا1",
+    welcomeSubtitle: "اشترِ وبيع أي شيء في منطقتك",
+    getStarted: "ابدأ الآن",
+    latestAds: "أحدث الإعلانات",
+    noAds: "لا توجد إعلانات متاحة بعد.",
+    beFirst: "كن أول من ينشر إعلان!",
+    noImage: "لا توجد صورة",
+    postedBy: "نشره",
+    
+    // Auth
+    loginTitle: "تسجيل الدخول إلى حسابك",
+    registerTitle: "إنشاء حسابك",
+    email: "البريد الإلكتروني",
+    password: "كلمة المرور",
+    name: "الاسم",
+    confirmPassword: "تأكيد كلمة المرور",
+    loginButton: "تسجيل الدخول",
+    registerButton: "تسجيل",
+    noAccount: "ليس لديك حساب؟",
+    haveAccount: "لديك حساب بالفعل؟",
+    registerHere: "سجل هنا",
+    loginHere: "سجل هنا",
+    
+    // Ad posting
+    postAdTitle: "نشر إعلان جديد",
+    title: "العنوان",
+    description: "الوصف",
+    price: "السعر",
+    category: "الفئة",
+    selectCategory: "اختر الفئة",
+    location: "الموقع",
+    contactPhone: "رقم الهاتف",
+    contactEmail: "البريد الإلكتروني",
+    imageUrl: "رابط الصورة",
+    imageUrlHint: "الصق رابط صورة من الإنترنت",
+    submitAd: "نشر الإعلان",
+    cancel: "إلغاء",
+    adReviewNote: "سيتم مراجعة إعلانك من قبل المدير قبل النشر.",
+    
+    // Ad detail
+    backToListings: "← العودة إلى الإعلانات",
+    contactSeller: "تواصل مع البائع",
+    
+    // Admin
+    adminDashboard: "لوحة المدير",
+    backToSite: "العودة إلى الموقع",
+    manageAds: "إدارة الإعلانات",
+    manageCategories: "إدارة الفئات",
+    manageUsers: "إدارة المستخدمين",
+    manageWallet: "إدارة المحفظة",
+    addFunds: "إضافة أموال",
+    user: "المستخدم",
+    status: "الحالة",
+    actions: "الإجراءات",
+    approve: "موافقة",
+    reject: "رفض",
+    delete: "حذف",
+    addNewCategory: "إضافة فئة جديدة",
+    categoryName: "اسم الفئة",
+    categoryDescription: "الوصف (اختياري)",
+    add: "إضافة",
+    slug: "الرابط",
+    joined: "تاريخ الانضمام",
+    role: "الدور",
+    walletBalance: "رصيد المحفظة",
+    addWalletFunds: "إضافة أموال للمحفظة",
+    enterAmount: "أدخل المبلغ",
+    
+    // Categories
+    categories: "الفئات",
+    electronics: "الإلكترونيات",
+    vehicles: "المركبات",
+    realEstate: "العقارات",
+    furniture: "الأثاث",
+    fashion: "الموضة",
+    services: "الخدمات",
+    jobs: "الوظائف",
+    other: "أخرى",
+    
+    // Footer
+    about: "حولنا",
+    aboutText: "منصة الإعلانات الأولى في إثيوبيا. اشترِ وبيع واستكشف صفقات مذهلة في منطقتك.",
+    followUs: "تابعنا",
+    lightMode: "الوضع الفاتح",
+    darkMode: "الوضع الداكن",
+    copyright: "© 2026 شبكة سييدونا. جميع الحقوق محفوظة.",
+    madeInEthiopia: "صنع ب ❤️ في إثيوبيا",
+    
+    // Wallet
+    wallet: "المحفظة",
+    currentBalance: "الرصيد الحالي",
+    fundAdded: "تمت إضافة الأموال بنجاح!",
+    insufficientFunds: "رصيد غير كافٍ",
+    
+    // Language
+    language: "اللغة",
+    english: "English",
+    amharic: "አማርኛ",
+    arabic: "العربية",
+  },
+};
+
+export type Language = "en" | "am" | "ar";
+export type TranslationKey = keyof typeof translations.en;

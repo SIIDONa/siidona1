@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { db } from "@/db";
 import { ads, categories, users } from "@/db/schema";
 import { eq } from "drizzle-orm";
+import Footer from "@/components/Footer";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default async function AdDetailPage({
   params,
@@ -37,27 +39,36 @@ export default async function AdDetailPage({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link href="/" className="text-2xl font-bold text-blue-600">
-            siidona1
-          </Link>
+    <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white dark:from-gray-900 dark:to-gray-800 flex flex-col">
+      {/* Header */}
+      <header className="bg-gradient-to-r from-yellow-600 to-yellow-500 dark:from-yellow-700 dark:to-yellow-600 shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+          <div className="flex justify-between items-center">
+            <Link href="/" className="text-2xl sm:text-3xl font-bold text-white drop-shadow-md">
+              siidona1
+            </Link>
+            <div className="flex items-center gap-3">
+              <LanguageSwitcher />
+            </div>
+          </div>
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex-1">
         <Link
           href="/"
-          className="text-blue-600 hover:underline mb-4 inline-block"
+          className="inline-flex items-center gap-2 text-yellow-600 dark:text-yellow-400 hover:text-yellow-700 dark:hover:text-yellow-300 font-bold mb-4 sm:mb-6 transition-colors"
         >
-          ← Back to listings
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to listings
         </Link>
 
-        <div className="bg-white rounded-lg shadow-md overflow-hidden">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border-2 border-yellow-200 dark:border-yellow-800">
           <div className="md:flex">
             <div className="md:w-1/2">
-              <div className="h-96 bg-gray-200 flex items-center justify-center">
+              <div className="h-64 sm:h-80 md:h-96 bg-gradient-to-br from-yellow-100 to-yellow-50 dark:from-gray-700 dark:to-gray-600 flex items-center justify-center overflow-hidden">
                 {ad.imageUrl ? (
                   <img
                     src={ad.imageUrl}
@@ -65,56 +76,60 @@ export default async function AdDetailPage({
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <span className="text-gray-400 text-lg">No image available</span>
+                  <div className="text-6xl sm:text-8xl">🛍️</div>
                 )}
               </div>
             </div>
 
-            <div className="md:w-1/2 p-8">
+            <div className="md:w-1/2 p-5 sm:p-8">
               <div className="mb-4">
-                <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                <span className="bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm font-bold">
                   {ad.categoryName}
                 </span>
               </div>
 
-              <h1 className="text-3xl font-bold mb-4">{ad.title}</h1>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-gray-800 dark:text-white">
+                {ad.title}
+              </h1>
               
-              <div className="text-3xl font-bold text-blue-600 mb-6">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-600 dark:text-yellow-400 mb-5 sm:mb-6">
                 {ad.price}
               </div>
 
               <div className="space-y-4 mb-6">
                 <div>
-                  <h3 className="font-semibold text-gray-700 mb-2">Description</h3>
-                  <p className="text-gray-600 whitespace-pre-wrap">{ad.description}</p>
+                  <h3 className="font-bold text-gray-700 dark:text-gray-200 mb-2">Description</h3>
+                  <p className="text-gray-600 dark:text-gray-300 whitespace-pre-wrap">{ad.description}</p>
                 </div>
 
                 {ad.location && (
                   <div>
-                    <h3 className="font-semibold text-gray-700 mb-1">Location</h3>
-                    <p className="text-gray-600">{ad.location}</p>
+                    <h3 className="font-bold text-gray-700 dark:text-gray-200 mb-1">Location</h3>
+                    <p className="text-gray-600 dark:text-gray-300">{ad.location}</p>
                   </div>
                 )}
               </div>
 
-              <div className="border-t pt-6">
-                <h3 className="font-semibold text-gray-700 mb-3">Contact Seller</h3>
-                <div className="space-y-2">
-                  <p className="text-gray-600">
-                    <span className="font-medium">Name:</span> {ad.userName}
+              <div className="border-t-2 border-yellow-200 dark:border-yellow-800 pt-5 sm:pt-6">
+                <h3 className="font-bold text-gray-700 dark:text-gray-200 mb-3 sm:mb-4 text-lg">
+                  Contact Seller
+                </h3>
+                <div className="space-y-2 sm:space-y-3">
+                  <p className="text-gray-600 dark:text-gray-300">
+                    <span className="font-bold">Name:</span> {ad.userName}
                   </p>
                   {ad.contactPhone && (
-                    <p className="text-gray-600">
-                      <span className="font-medium">Phone:</span>{" "}
-                      <a href={`tel:${ad.contactPhone}`} className="text-blue-600 hover:underline">
+                    <p className="text-gray-600 dark:text-gray-300">
+                      <span className="font-bold">Phone:</span>{" "}
+                      <a href={`tel:${ad.contactPhone}`} className="text-yellow-600 dark:text-yellow-400 hover:underline font-medium">
                         {ad.contactPhone}
                       </a>
                     </p>
                   )}
                   {ad.contactEmail && (
-                    <p className="text-gray-600">
-                      <span className="font-medium">Email:</span>{" "}
-                      <a href={`mailto:${ad.contactEmail}`} className="text-blue-600 hover:underline">
+                    <p className="text-gray-600 dark:text-gray-300">
+                      <span className="font-bold">Email:</span>{" "}
+                      <a href={`mailto:${ad.contactEmail}`} className="text-yellow-600 dark:text-yellow-400 hover:underline font-medium">
                         {ad.contactEmail}
                       </a>
                     </p>
@@ -122,13 +137,15 @@ export default async function AdDetailPage({
                 </div>
               </div>
 
-              <div className="mt-6 text-sm text-gray-500">
+              <div className="mt-5 sm:mt-6 text-sm text-gray-500 dark:text-gray-400">
                 Posted on {ad.createdAt ? new Date(ad.createdAt).toLocaleDateString() : "Unknown"}
               </div>
             </div>
           </div>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }

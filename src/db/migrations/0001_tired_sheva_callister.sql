@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD `wallet_balance` integer DEFAULT 0 NOT NULL;

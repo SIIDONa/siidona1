@@ -3,6 +3,8 @@ import { getSession } from "@/lib/auth";
 import { db } from "@/db";
 import { ads, categories } from "@/db/schema";
 import Link from "next/link";
+import Footer from "@/components/Footer";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default async function NewAdPage() {
   const session = await getSession();
@@ -47,159 +49,171 @@ export default async function NewAdPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link href="/" className="text-2xl font-bold text-blue-600">
-            siidona1
-          </Link>
+    <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white dark:from-gray-900 dark:to-gray-800 flex flex-col">
+      {/* Header */}
+      <header className="bg-gradient-to-r from-yellow-600 to-yellow-500 dark:from-yellow-700 dark:to-yellow-600 shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+          <div className="flex justify-between items-center">
+            <Link href="/" className="text-2xl sm:text-3xl font-bold text-white drop-shadow-md">
+              siidona1
+            </Link>
+            <div className="flex items-center gap-3">
+              <LanguageSwitcher />
+            </div>
+          </div>
         </div>
       </header>
 
-      <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-3xl font-bold mb-8">Post a New Ad</h1>
+      <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex-1">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-5 sm:p-8 border-2 border-yellow-200 dark:border-yellow-800">
+          <h1 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-gray-800 dark:text-white">
+            Post a New Ad
+          </h1>
 
-        <form action={createAd} className="bg-white rounded-lg shadow-md p-6 space-y-6">
-          <div>
-            <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
-              Title *
-            </label>
-            <input
-              id="title"
-              name="title"
-              type="text"
-              required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="e.g., iPhone 13 Pro Max"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
-              Description *
-            </label>
-            <textarea
-              id="description"
-              name="description"
-              required
-              rows={5}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Describe your item..."
-            />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <form action={createAd} className="space-y-5 sm:space-y-6">
             <div>
-              <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-1">
-                Price *
+              <label htmlFor="title" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
+                Title *
               </label>
               <input
-                id="price"
-                name="price"
+                id="title"
+                name="title"
                 type="text"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="e.g., $500"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-yellow-200 dark:border-yellow-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-800 dark:text-white"
+                placeholder="e.g., iPhone 13 Pro Max"
               />
             </div>
 
             <div>
-              <label htmlFor="categoryId" className="block text-sm font-medium text-gray-700 mb-1">
-                Category *
+              <label htmlFor="description" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
+                Description *
               </label>
-              <select
-                id="categoryId"
-                name="categoryId"
+              <textarea
+                id="description"
+                name="description"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                rows={4}
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-yellow-200 dark:border-yellow-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-800 dark:text-white"
+                placeholder="Describe your item..."
+              />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <div>
+                <label htmlFor="price" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
+                  Price *
+                </label>
+                <input
+                  id="price"
+                  name="price"
+                  type="text"
+                  required
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-yellow-200 dark:border-yellow-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-800 dark:text-white"
+                  placeholder="e.g., $500"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="categoryId" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
+                  Category *
+                </label>
+                <select
+                  id="categoryId"
+                  name="categoryId"
+                  required
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-yellow-200 dark:border-yellow-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-800 dark:text-white"
+                >
+                  <option value="">Select a category</option>
+                  {allCategories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="location" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
+                Location
+              </label>
+              <input
+                id="location"
+                name="location"
+                type="text"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-yellow-200 dark:border-yellow-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-800 dark:text-white"
+                placeholder="e.g., Addis Ababa, Ethiopia"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <div>
+                <label htmlFor="contactPhone" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
+                  Contact Phone
+                </label>
+                <input
+                  id="contactPhone"
+                  name="contactPhone"
+                  type="tel"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-yellow-200 dark:border-yellow-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-800 dark:text-white"
+                  placeholder="e.g., +251 91 234 5678"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="contactEmail" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
+                  Contact Email
+                </label>
+                <input
+                  id="contactEmail"
+                  name="contactEmail"
+                  type="email"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-yellow-200 dark:border-yellow-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-800 dark:text-white"
+                  placeholder="e.g., email@example.com"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="imageUrl" className="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
+                Image URL
+              </label>
+              <input
+                id="imageUrl"
+                name="imageUrl"
+                type="url"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-yellow-200 dark:border-yellow-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-800 dark:text-white"
+                placeholder="https://example.com/image.jpg"
+              />
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
+                Paste a link to an image hosted online
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <button
+                type="submit"
+                className="flex-1 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white py-2 sm:py-3 rounded-lg font-bold text-base sm:text-lg hover:from-yellow-600 hover:to-yellow-700 transition-all shadow-md hover:shadow-lg"
               >
-                <option value="">Select a category</option>
-                {allCategories.map((category) => (
-                  <option key={category.id} value={category.id}>
-                    {category.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-1">
-              Location
-            </label>
-            <input
-              id="location"
-              name="location"
-              type="text"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="e.g., New York, NY"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label htmlFor="contactPhone" className="block text-sm font-medium text-gray-700 mb-1">
-                Contact Phone
-              </label>
-              <input
-                id="contactPhone"
-                name="contactPhone"
-                type="tel"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="e.g., (555) 123-4567"
-              />
+                Submit Ad
+              </button>
+              <Link
+                href="/"
+                className="flex-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 py-2 sm:py-3 rounded-lg font-bold text-base sm:text-lg hover:bg-gray-300 dark:hover:bg-gray-600 text-center transition-colors"
+              >
+                Cancel
+              </Link>
             </div>
 
-            <div>
-              <label htmlFor="contactEmail" className="block text-sm font-medium text-gray-700 mb-1">
-                Contact Email
-              </label>
-              <input
-                id="contactEmail"
-                name="contactEmail"
-                type="email"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="e.g., email@example.com"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="imageUrl" className="block text-sm font-medium text-gray-700 mb-1">
-              Image URL
-            </label>
-            <input
-              id="imageUrl"
-              name="imageUrl"
-              type="url"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="https://example.com/image.jpg"
-            />
-            <p className="text-xs text-gray-500 mt-1">
-              Paste a link to an image hosted online
+            <p className="text-sm text-gray-500 dark:text-gray-400 text-center bg-yellow-50 dark:bg-yellow-900/20 p-3 rounded-lg">
+              * Your ad will be reviewed by an admin before being published.
             </p>
-          </div>
-
-          <div className="flex gap-4">
-            <button
-              type="submit"
-              className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
-            >
-              Submit Ad
-            </button>
-            <Link
-              href="/"
-              className="flex-1 bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300 text-center"
-            >
-              Cancel
-            </Link>
-          </div>
-
-          <p className="text-sm text-gray-500">
-            * Your ad will be reviewed by an admin before being published.
-          </p>
-        </form>
+          </form>
+        </div>
       </main>
+
+      <Footer />
     </div>
   );
 }

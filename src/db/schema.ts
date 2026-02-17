@@ -6,6 +6,7 @@ export const users = sqliteTable("users", {
   email: text("email").notNull().unique(),
   password: text("password").notNull(),
   role: text("role", { enum: ["user", "admin"] }).notNull().default("user"),
+  walletBalance: integer("wallet_balance").notNull().default(0), // Balance in cents
   createdAt: integer("created_at", { mode: "timestamp" }).$defaultFn(() => new Date()),
 });
 

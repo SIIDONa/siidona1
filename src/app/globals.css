@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+/* Golden Theme Color Variables */
+:root {
+  --color-gold-50: #fefce8;
+  --color-gold-100: #fef9c3;
+  --color-gold-200: #fef08a;
+  --color-gold-300: #fde047;
+  --color-gold-400: #facc15;
+  --color-gold-500: #eab308;
+  --color-gold-600: #ca8a04;
+  --color-gold-700: #a16207;
+  --color-gold-800: #854d0e;
+  --color-gold-900: #713f12;
+  --color-gold-950: #451a03;
+}
+
 /* Dark mode support */
 .dark {
   color-scheme: dark;
@@ -47,4 +62,201 @@
 
 .dark .shadow-sm {
   @apply shadow-lg shadow-gray-900/30;
+}
+
+/* Golden Theme Overrides */
+.dark .bg-yellow-50 {
+  @apply bg-yellow-900/30;
+}
+
+.dark .bg-yellow-100 {
+  @apply bg-yellow-900/50;
+}
+
+.dark .text-yellow-800 {
+  @apply text-yellow-300;
+}
+
+.dark .text-yellow-700 {
+  @apply text-yellow-400;
+}
+
+.dark .text-yellow-600 {
+  @apply text-yellow-400;
+}
+
+.dark .text-yellow-500 {
+  @apply text-yellow-400;
+}
+
+.dark .bg-yellow-200 {
+  @apply bg-yellow-800;
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+[dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+[dir="rtl"] .ml-4 {
+  margin-left: 0;
+  margin-right: 1rem;
+}
+
+[dir="rtl"] .mr-4 {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+[dir="rtl"] .ml-2 {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+[dir="rtl"] .mr-2 {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+/* Golden color utilities */
+.bg-gold {
+  background-color: var(--color-gold-500);
+}
+
+.bg-gold-light {
+  background-color: var(--color-gold-100);
+}
+
+.bg-gold-dark {
+  background-color: var(--color-gold-700);
+}
+
+.text-gold {
+  color: var(--color-gold-600);
+}
+
+.text-gold-light {
+  color: var(--color-gold-400);
+}
+
+.border-gold {
+  border-color: var(--color-gold-500);
+}
+
+.from-gold {
+  --tw-gradient-from: var(--color-gold-400);
+}
+
+.to-gold {
+  --tw-gradient-to: var(--color-gold-600);
+}
+
+.hover\:bg-gold:hover {
+  background-color: var(--color-gold-600);
+}
+
+.focus\:ring-gold:focus {
+  --tw-ring-color: var(--color-gold-500);
+}
+
+/* Golden button styles */
+.btn-gold {
+  @apply bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-bold py-2 px-4 rounded-lg hover:from-yellow-600 hover:to-yellow-700 transition-all shadow-md;
+}
+
+.btn-gold-outline {
+  @apply border-2 border-yellow-500 text-yellow-600 font-bold py-2 px-4 rounded-lg hover:bg-yellow-50 dark:hover:bg-yellow-900/30 transition-all;
+}
+
+/* Golden card styles */
+.card-gold {
+  @apply bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-yellow-200 dark:border-yellow-800 overflow-hidden;
+}
+
+.card-gold:hover {
+  @apply shadow-xl border-yellow-300 dark:border-yellow-700 transition-all;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-yellow-500 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-yellow-600;
+}
+
+/* Animation for golden shimmer */
+@keyframes golden-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.golden-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-gold-200) 0%,
+    var(--color-gold-300) 50%,
+    var(--color-gold-200) 100%
+  );
+  background-size: 200% 100%;
+  animation: golden-shimmer 2s infinite;
+}
+
+/* Focus styles for golden theme */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  @apply outline-none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  --tw-ring-color: var(--color-gold-400);
+}
+
+/* Make sure images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive typography */
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 18px;
+  }
 }

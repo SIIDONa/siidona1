@@ -30,6 +30,10 @@ The template has been transformed into "siidona1", a complete classified ads pla
 - [x] **FIXED**: Backend - switched from @kilocode/app-builder-db to libsql for Bun compatibility
 - [x] **REMOVED**: "Made with ❤️ in Ethiopia" from footer
 - [x] **FIXED**: Language switching now works - added cookie support for server-side i18n
+- [x] **NEW**: Direct image upload system - users can now upload images directly when posting ads
+- [x] **NEW**: Added placeholder image for ads without images
+- [x] **NEW**: Direct image upload system - users can now upload images directly when posting ads
+- [x] **NEW**: Added placeholder image for ads without images
 
 ## Current Structure
 
@@ -59,7 +63,8 @@ The template has been transformed into "siidona1", a complete classified ads pla
 - Post classified ads with:
   - Title, description, price
   - Category selection
-  - Optional: location, contact info, image URL
+  - Optional: location, contact info
+  - **NEW**: Direct image upload (file upload or URL)
 - View all approved ads
 - View detailed ad information
 

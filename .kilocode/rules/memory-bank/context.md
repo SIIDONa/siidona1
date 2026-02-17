@@ -34,6 +34,7 @@ The template has been transformed into "siidona1", a complete classified ads pla
 - [x] **NEW**: Added placeholder image for ads without images
 - [x] **NEW**: Direct image upload system - users can now upload images directly when posting ads
 - [x] **NEW**: Added placeholder image for ads without images
+- [x] **NEW**: Compact footer design - reduced padding, spacing, and font sizes for better mobile responsiveness
 
 ## Current Structure
 

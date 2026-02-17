@@ -27,6 +27,7 @@ The template has been transformed into "siidona1", a complete classified ads pla
 - [x] **NEW**: Wallet system with admin-only fund management
 - [x] **NEW**: Fully responsive design for all screen sizes
 - [x] **NEW**: Golden color theme throughout the site
+- [x] **FIXED**: Backend - switched from @kilocode/app-builder-db to libsql for Bun compatibility
 
 ## Current Structure
 
@@ -40,6 +41,7 @@ The template has been transformed into "siidona1", a complete classified ads pla
 | `src/app/admin/page.tsx` | Admin dashboard + Wallet | ✅ Complete |
 | `src/app/api/auth/` | Auth API routes | ✅ Complete |
 | `src/db/schema.ts` | Database schema | ✅ Complete |
+| `src/db/index.ts` | Database connection (libsql) | ✅ Fixed |
 | `src/db/seed.ts` | Database seeding | ✅ Complete |
 | `src/lib/auth.ts` | Auth utilities | ✅ Complete |
 | `src/lib/translations.ts` | i18n translations (EN/AM/AR) | ✅ Complete |
@@ -129,7 +131,7 @@ The template has been transformed into "siidona1", a complete classified ads pla
 - Role-based access control (user/admin)
 
 ### Database
-- SQLite with Drizzle ORM
+- SQLite with Drizzle ORM + libsql client
 - Migrations in `src/db/migrations/`
 - Seed script: `bun db:seed`
 
@@ -145,6 +147,17 @@ The template has been transformed into "siidona1", a complete classified ads pla
 - RTL support for Arabic
 - LocalStorage persistence
 
+## Backend Fix (Latest)
+
+**Problem**: The backend was using `@kilocode/app-builder-db` from GitHub which was unreliable and had compatibility issues.
+
+**Solution**: 
+- Switched to `@libsql/client` for database connectivity
+- Updated `src/db/index.ts` to use libsql with drizzle
+- Updated `src/db/migrate.ts` to use libsql migrator
+- Removed dependency on external package
+- Database now works perfectly with Bun runtime
+
 ## Available Commands
 
 ```bash
@@ -153,7 +166,7 @@ bun build        # Production build
 bun typecheck    # Type checking
 bun lint         # Linting
 bun db:generate  # Generate migrations
-bun db:push      # Push migrations to DB
+bun db:migrate   # Push migrations to DB
 bun db:seed      # Seed database
 ```
 
@@ -169,6 +182,7 @@ bun db:seed      # Seed database
 | 2026-02-17 | Added seed script and documentation |
 | 2026-02-17 | Added golden footer with social media and day/night mode |
 | 2026-02-17 | **Major update**: Golden theme, responsive, i18n (EN/AM/AR), wallet system |
+| 2026-02-17 | **Backend fix**: Switched from @kilocode/app-builder-db to libsql for Bun compatibility |
 
 ## Next Steps (Optional Enhancements)
 
